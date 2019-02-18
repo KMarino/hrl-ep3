@@ -1,0 +1,93 @@
+episode_monitor_str: Episode.Monitor.csv    # Basename of Episode monitor
+step_monitor_str: Last.Step.Monitor.csv     # Name of step monitor (for last step)
+plot_keys:                                  # Values we want to plot (and necessary info to plot them)
+    delta_state_ep:
+        log_name: delta_state
+        data_src: episode_monitor
+        data_type: array
+        display_type: elementwise
+        bin_size: 100
+        smooth: 0
+    delta_obs_ep:
+        log_name: delta_obs
+        data_src: episode_monitor
+        data_type: array
+        display_type: elementwise
+        bin_size: 100
+        smooth: 0
+    mean_action_ep:
+        log_name: mean_action
+        data_src: episode_monitor
+        data_type: array
+        display_type: elementwise
+        bin_size: 100
+        smooth: 0
+    episode_len_ep:
+        log_name: episode_len
+        data_src: episode_monitor
+        data_type: scalar
+        bin_size: 100
+        smooth: 0
+    rewards_ep:
+        log_name:
+            reward_env: True
+            reward_exp: False
+            reward_run: False
+            reward_ctrl: False
+            reward_contact: False
+            reward_survive: False 
+            reward_forward: False
+            reward_move: False
+            reward_cycle: False
+            reward_cycle_s: False
+            reward_cycle_a: False
+        data_src: episode_monitor
+        data_type: multiscalar
+        bin_size: 100
+        smooth: 0
+    obs_step:
+        log_name: obs
+        data_src: step_monitor
+        update_delay: 10
+        data_type: array
+        display_type: elementwise
+        bin_size: 1
+        smooth: 0
+    action_step:
+        log_name: action
+        data_src: step_monitor
+        update_delay: 10
+        data_type: array
+        display_type: elementwise
+        bin_size: 1
+        smooth: 0
+    env_count_step:
+        log_name: env_count
+        data_src: step_monitor            
+        update_delay: 10
+        data_type: scalar
+        bin_size: 1
+        smooth: 0
+    episode_count_step:
+        log_name: episode_count
+        data_src: step_monitor
+        update_delay: 10
+        data_type: single_value
+    reward_step:
+        log_name:
+            reward_env: True
+            reward_exp: False
+            reward_run: False
+            reward_ctrl: False
+            reward_contact: False
+            reward_survive: False
+            reward_forward: False 
+            reward_move: False
+            reward_cycle: False
+            reward_cycle_s: False
+            reward_cycle_a: False
+        data_src: step_monitor
+        update_delay: 10
+        data_type: multiscalar
+        bin_size: 1
+        smooth: 0

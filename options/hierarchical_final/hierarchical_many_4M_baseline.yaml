@@ -1,0 +1,70 @@
+alg_ppo:
+    use_gae: True           # Use generalized advantage estimation
+    gae_tau: 0.95           # GAE parameter
+    entropy_coef: 0         # Entropy term coefficient
+    value_loss_coef: 1      # Value loss coefficient
+    num_steps: 2048         # Number of forward steps
+    num_processes: 1        # Number of parallel processes to run
+    ppo_epoch: 100           # Number of ppo epochs
+    num_mini_batch: 32      # Number of batcxhes for ppo
+    clip_param: 0.2         # ppo clip parameter        
+    log_mult: 1             # How much less often to log for this alg
+    norm_ret: False         # Whether to add normalization to returns
+alg_a2c:
+    use_gae: False          # Use generalized advantage estimation
+    gae_tau: 0.95           # GAE parameter
+    entropy_coef: 0.01      # Entropy term coefficient
+    value_loss_coef: 0.5    # Value loss coefficient
+    num_steps: 5            # Number of forward steps
+    num_processes: 16       # Number of parallel processes to run     
+    log_mult: 10            # How much less often to log for this alg
+    norm_ret: False
+model:
+    recurrent_policy: False     # Use a recurrent policy
+    mode: hierarchical_many     # Mode is hierarchical many
+    hid_sz: 32                  # MLP hidden size
+    model_type: MLPSimpleDebug  # What kind of network model (MLP | Mult | Module)
+    num_layer: 2                # Number of layers in MLP (minus input layer)
+env:
+    gamma: 0.99             # Discount factor for rewards
+    num_stack: 1            # Number of frames to stack
+    add_timestep: False     # Add timestep to observations
+    known_reset: False      # Reset to known position
+    time_scale: 0.001       # What to multiply timestep by for AC input
+    step_plus_noclip: True              # Do the /3 no clip thing from https://github.com/pat-coady/trpo/blob/5ac6b2e8476d0f1639a88128f59e8a51f1f8bce1/src/train.py#L92
+    maze:
+        goal_radius: 2              # Distance to goal in order to reach it
+        goal_reward: 5              # How much reward to give for getting to goal
+        velocity_reward_weight: 0   # How much weight to give to moving (any direction) 
+        use_ctrl_cost: 0            # Whether to use ctrl cost in final reward
+        use_contact_cost: 0         # Whether to use contact cost in final reward
+        use_survive_reward: 0       # Whether to use survive reward in final reward
+        use_negative_goals: False   # Whether to absorb at other goals (and give 0 or negative reward)
+        negative_goal_reward: 0     # What reward to give for reaching the wrong goal
+logs:
+    log_base: /checkpoint/kdmarino/phasefunlogs/    # Base dir log (should be same for all config files)
+    exp_name: hierarchical_many_4M_baseline_final      # Unique experiment name
+    log_interval: 1                                 # Log interval, one log per n updates
+    save_interval: 100                              # Save interval, one per n updates
+    vis_interval: 1                                 # Vis interval, one log per n updates
+optim_ppo:                 
+    lr: 0.0003                              # Learning rate
+    eps: 0.00001                            # RMSprop optimizer epsiolon
+    alpha: 0.99                             # RMSprop optimizer alpha
+    max_grad_norm: 0.5                      # Max norm of gradients
+    num_frames: 4000000                    # Number of frames to train
+    hierarchical_mode: train_highlevel      # How to train the hierarchical policies (train_highlevel | train_both)
+    num_ll_steps: 10                        # How many low level steps to do in a row before update high level step
+optim_a2c: 
+    lr: 0.0007              # Learning rate
+    eps: 0.00001            # RMSprop optimizer epsiolon
+    alpha: 0.99             # RMSprop optimizer alpha
+    max_grad_norm: 0.5      # Max norm of gradients
+    num_frames: 4000000    # Number of frames to train
+    hierarchical_mode: train_highlevel      # How to train the hierarchical policies (train_highlevel | train_both)
+    num_ll_steps: 10                        # How many low level steps to do in a row before update high level step
+lowlevel:
+    optfile: options/baseline_lowlevel/baseline_simplemlp_pretrain_any.yaml # Opt file location of low level policy
+    ckpt: /checkpoint/kdmarino/phasefunlogs/baseline_lowlevel/baseline_simplemlp_pretrain_any/ppo/ExplorerAnt-v2/
+    deterministic: False    # Whether low level policies are deterministic
+    num_load: 16            # Number of low level policies

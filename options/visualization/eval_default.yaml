@@ -1,0 +1,3 @@
+episode_monitor_str: Episode.Monitor.csv    # Basename of Episode monitor
+plot_keys:                                  # Values we want to plot (and necessary info to plot them)
+

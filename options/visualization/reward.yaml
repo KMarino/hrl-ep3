@@ -1,0 +1,20 @@
+episode_monitor_str: Episode.Monitor.csv    # Basename of Episode monitor
+plot_keys:                                  # Values we want to plot (and necessary info to plot them)
+    rewards_ep:
+        log_name:
+            reward_env: True
+            reward_exp: False
+            reward_run: False
+            reward_ctrl: False
+            reward_contact: False
+            reward_survive: False 
+            reward_forward: False
+            reward_move: False
+            reward_cycle: False
+            reward_cycle_s: False
+            reward_cycle_a: False
+            reward_thresh: False
+        data_src: episode_monitor
+        data_type: multiscalar
+        bin_size: 100
+        smooth: 1

@@ -1,0 +1,9 @@
+episode_monitor_str: Episode.Monitor.csv    # Basename of Episode monitor
+plot_keys:                                  # Values we want to plot (and necessary info to plot them)
+    rewards_ep:
+        log_name:
+            reward_env: True
+        data_src: episode_monitor
+        data_type: multiscalar
+        bin_size: 100
+        smooth: 1

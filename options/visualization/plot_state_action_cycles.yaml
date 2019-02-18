@@ -1,0 +1,25 @@
+episode_monitor_str: Episode.Monitor.csv    # Basename of Episode monitor
+step_monitor_str: Last.Step.Monitor.csv     # Name of step 
+plot_keys:                                  # Values we want to plot (and necessary info to plot them)
+    obs_step:
+        log_name: obs
+        data_src: step_monitor
+        update_delay: 0
+        bin_size: 1
+        smooth: 0
+        data_type: array
+        display_type: elementwise_subset
+        start_ind: 0
+        end_ind: 20
+        time_start: 500
+        time_end: 550
+    action_step:
+        log_name: action
+        data_src: step_monitor
+        update_delay: 0
+        bin_size: 1
+        smooth: 0
+        data_type: array
+        display_type: elementwise
+        time_start: 500
+        time_end: 550

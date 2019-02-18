@@ -1,0 +1,11 @@
+episode_monitor_str: Episode.Monitor.csv    # Basename of Episode monitor
+step_monitor_str: Last.Step.Monitor.csv     # Name of step 
+plot_keys:                                  # Values we want to plot (and necessary info to plot them)
+    theta_xy_plot:
+        log_name: 
+            state: True
+            obs: True
+        data_src: step_monitor
+        update_delay: 0
+        data_type: special
+        window_once: True

@@ -1,0 +1,10 @@
+alg_monitor_str: Alg.Monitor.csv
+plot_keys:                                  # Values we want to plot (and necessary info to plot them)
+    supervised_loss:
+        log_name:
+            train_loss: True
+            val_loss: True
+        data_src: alg_monitor
+        data_type: multiscalar
+        bin_size: 1
+        smooth: 0

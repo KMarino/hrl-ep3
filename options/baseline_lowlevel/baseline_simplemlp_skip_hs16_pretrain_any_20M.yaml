@@ -1,0 +1,59 @@
+alg_ppo:
+    use_gae: True           # Use generalized advantage estimation
+    gae_tau: 0.95           # GAE parameter
+    entropy_coef: 0         # Entropy term coefficient
+    value_loss_coef: 1      # Value loss coefficient
+    num_steps: 2048         # Number of forward steps
+    num_processes: 1        # Number of parallel processes to run
+    ppo_epoch: 10           # Number of ppo epochs
+    num_mini_batch: 32      # Number of batcxhes for ppo
+    clip_param: 0.2         # ppo clip parameter        
+    log_mult: 1             # How much less often to log for this alg
+    norm_ret: False         # Whether to add normalization to returns
+alg_a2c:
+    use_gae: False          # Use generalized advantage estimation
+    gae_tau: 0.95           # GAE parameter
+    entropy_coef: 0.01      # Entropy term coefficient
+    value_loss_coef: 0.5    # Value loss coefficient
+    num_steps: 5            # Number of forward steps
+    num_processes: 16       # Number of parallel processes to run     
+    log_mult: 10            # How much less often to log for this alg     
+model:
+    recurrent_policy: False     # Use a recurrent policy
+    mode: baseline_lowlevel        # Mode is lowlevel phase
+    hid_sz: 16                  # MLP hidden size
+    model_type: MLPSimpleDebug     # What kind of network model (MLP | Mult | Module)
+    num_layer: 2                # Number of layers in MLP (minus input layer)
+    phase_period: 10   
+env:
+    gamma: 0.99                         # Discount factor for rewards
+    num_stack: 1                        # Number of frames to stack
+    add_timestep: False                  # Add timestep to observations
+    known_reset: False                  # Reset to known position
+    step_plus_noclip: True              # Do the /3 no clip thing from https://github.com/pat-coady/trpo/blob/5ac6b2e8476d0f1639a88128f59e8a51f1f8bce1/src/train.py#L92
+    time_scale: 0.001                   # What to multiply timestep by for AC input
+    theta_space_mode: pretrain_any      # What theta mode we're in
+    theta_reset_mode: never             # When to change theta
+    theta_reward_mode: lax              # How to punish perpendicular movement
+    theta_obs_mode: pretrain                 # How to parameterize theta in network (ind | vector)
+    theta_memory_lookback: 10           # How far to look back for reference global theta
+    time_limit: 1000                    # When to end an episode
+    reward_shape_type: instant
+logs:
+    log_base: /checkpoint/kdmarino/phasefunlogs/    # Base dir log (should be same for all config files)
+    exp_name: baseline_simplemlp_skip_hs16_pretrain_any_20M       # Unique experiment name
+    log_interval: 1                                 # Log interval, one log per n updates
+    save_interval: 100000000000                     # Save interval, one per n updates
+    vis_interval: 1                                 # Vis interval, one log per n updates
+optim_ppo:                 
+    lr: 0.0003              # Learning rate
+    eps: 0.00001            # RMSprop optimizer epsiolon
+    alpha: 0.99             # RMSprop optimizer alpha
+    max_grad_norm: 0.5      # Max norm of gradients
+    num_frames: 20000000     # Number of frames to train
+optim_a2c: 
+    lr: 0.0007              # Learning rate
+    eps: 0.00001            # RMSprop optimizer epsiolon
+    alpha: 0.99             # RMSprop optimizer alpha
+    max_grad_norm: 0.5      # Max norm of gradients
+    num_frames: 20000000     # Number of frames to train
