@@ -7,7 +7,7 @@ If you find this work helpful, please cite our work, as well as Ilya Kostrikov's
     @article{marino2018hierarchical,
       title={Hierarchical RL Using an Ensemble of Proprioceptive Periodic Policies},
       author={Marino, Kenneth and Gupta, Abhinav and Fergus, Rob and Szlam, Arthur},
-      journal = {International Conference on Learning Representations},
+      journal = {ICLR},
       year={2019}
     }
 
