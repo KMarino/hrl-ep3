@@ -331,7 +331,7 @@ def main():
         raise NotImplementedError
 
     # Make the rollout structures 
-    # TODO - kind of dumb hack to avoid having to do too much work here
+    # Kind of dumb hack to avoid having to deal with rollouts
     hl_rollouts = RolloutStorage(10000*args.num_ep, 1, hl_obs_shape, hl_action_space, hl_policy.state_size)
     ll_rollouts = MaskingRolloutStorage(alg_opt['num_steps'], 1, ll_obs_shape, ll_action_space, ll_policy.state_size)
     hl_current_obs = torch.zeros(1, *hl_obs_shape)
