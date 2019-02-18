@@ -1,6 +1,3 @@
-from . import humanoid_env
-from . import humanoid_env_allobs
-from . import humanoid_env_allbutxy
 from . import proprioceptive_humanoid_env
 import numpy as np
 

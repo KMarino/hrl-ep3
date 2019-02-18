@@ -13,6 +13,7 @@ import copy
 import glob
 import os
 import time
+import scipy
 import pdb
 
 import gym
@@ -429,7 +430,10 @@ def main():
                     raw_env.render()
                     if not tabbed:
                         # GLFW TAB and RELEASE are hardcoded here
-                        raw_env.unwrapped.viewer.key_callback(None, 258, None, 0, None)
+                        raw_env.unwrapped.viewer.cam.distance += 5
+                        raw_env.unwrapped.viewer.cam.lookat[0] += 2.5
+                        #raw_env.unwrapped.viewer.cam.lookat[1] += 2.5
+                        raw_env.render()
                         tabbed = True
                     frames.append(raw_env.unwrapped.viewer._read_pixels_as_in_window())
 

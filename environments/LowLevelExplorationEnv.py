@@ -9,18 +9,9 @@ import shutil
 import numpy as np
 import random
 from . import ant_env
-from . import swimmer_env
-from . import humanoid_env
-from . import simple_humanoid_env
-from . import humanoid_env_allobs
-from . import humanoid_env_allbutxy
-from . import cheetah_env
 from . import proprioceptive_humanoid_env
 from . import explorer_ant
-from . import explorer_swimmer
 from . import explorer_humanoid
-from . import explorer_simple_humanoid
-from . import explorer_cheetah
 from . import geom_utils
 from gym.spaces.box import Box
 import math
@@ -100,21 +91,12 @@ class LowLevelExplorationEnv(gym.Wrapper):
         if isinstance(env.unwrapped, ant_env.BaseAntEnv) or isinstance(env.unwrapped, ant_env.BaseAntLowGearEnv):
             self.env_base = 'ant'
             self.forward_mult = 1
-        elif isinstance(env.unwrapped, swimmer_env.BaseSwimmerEnv):
-            self.env_base = 'swimmer'
-            self.forward_mult = 1
-        elif isinstance(env.unwrapped, cheetah_env.BaseCheetahEnv):
-            self.env_base = 'cheetah'
-            self.forward_mult = 1
-        elif isinstance(env.unwrapped, humanoid_env.BaseHumanoidEnv) or isinstance(env.unwrapped, humanoid_env_allbutxy.BaseHumanoidAllObsButXYEnv) or isinstance(env.unwrapped, humanoid_env_allobs.BaseHumanoidAllObsEnv) or isinstance(env.unwrapped, proprioceptive_humanoid_env.BaseProprioceptiveHumanoidEnv):
+        elif isinstance(env.unwrapped, proprioceptive_humanoid_env.BaseProprioceptiveHumanoidEnv):
             self.env_base = 'humanoid'
             if 'forward_mult' in opt['env']:
                 self.forward_mult = opt['env']['forward_mult']
             else:
                 self.forward_mult = 1
-        elif isinstance(env.unwrapped, simple_humanoid_env.BaseSimpleHumanoidEnv):
-            self.env_base = 'simple_humanoid'
-            self.forward_mult = 1
         else:
             raise NotImplementedError
 
@@ -142,10 +124,6 @@ class LowLevelExplorationEnv(gym.Wrapper):
             self.state_cycle_weight = opt['env']['state_cycle_weight']
             self.action_cycle_weight = opt['env']['action_cycle_weight']
             self.cycle_startup = opt['env']['cycle_startup']
-
-        if isinstance(env.unwrapped, simple_humanoid_env.BaseSimpleHumanoidEnv):
-            self.state_cycle_weight = 0.01
-            self.action_cycle_weight = 0
 
         # How far back to look for consistent theta direction
         self.theta_memory_lookback = opt['env']['theta_memory_lookback']

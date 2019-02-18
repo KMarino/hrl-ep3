@@ -1,8 +1,6 @@
 # Kenneth Marino
 # Lines taken from https://github.com/haarnoja/sac
-from . import humanoid_env
 from . import proprioceptive_humanoid_env
-from . import humanoid_env_allbutxy
 import numpy as np
 import random
 import pdb

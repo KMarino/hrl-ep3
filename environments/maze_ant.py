@@ -443,24 +443,6 @@ class AntCrossMazeEnv(AntMazeEnv):
     def option_init(self, maze_opt):
         super(AntCrossMazeEnv, self).option_init(maze_opt)  
 
-# Cross key maze ant environment
-class AntCrossKeyMazeEnv(AntKeyMazeEnv):
-    # Init
-    def __init__(self):
-        maze_opt = {}
-
-        # Add Cross maze goals
-        maze_opt['possible_goal_positions'] = [[6, 6], [12, 0], [6, -6]]
- 
-        # Add cross maze xml
-        maze_opt['xml_file'] = 'cross_maze_ant.xml' 
-        
-        # Call super class
-        super(AntCrossKeyMazeEnv, self).__init__(maze_opt)
-
-    def option_init(self, maze_opt):
-        super(AntCrossKeyMazeEnv, self).option_init(maze_opt)  
-
 # Skull ant maze environment
 class AntSkullMazeEnv(AntMazeEnv):
     # Init

@@ -93,18 +93,21 @@
         <geom name="wall-1" pos="-1.5     0 .5" rgba="1. 1. 1. 1" type="box" size="0.5 1.5 1" density='0.00001' contype="1" conaffinity="1"/>
         <geom name="wall-2" pos="0    1.5 .5" rgba="1. 1. 1. 1" type="box" size="2. 0.5 1" density='0.00001' contype="1" conaffinity="1"/>
         
-        <geom name="wall-3" pos="1.5   3 .5" rgba="0.5 1. 1. 1" type="box" size="0.5 2 1" density='0.00001' contype="1" conaffinity="1"/>
-        <geom name="wall-4" pos="3   4.5 .5" rgba="0.5 1. 1. 1" type="box" size="1.5 0.5 1" density='0.00001' contype="1" conaffinity="1"/>
-        <geom name="wall-5" pos="4.5   3 .5" rgba="0.5 1. 1. 1" type="box" size="0.5 2 1" density='0.00001' contype="1" conaffinity="1"/>
+        <geom name="wall-3" pos="1.5   3 .5" rgba="1 1. 1. 1" type="box" size="0.5 2 1" density='0.00001' contype="1" conaffinity="1"/>
+        <geom name="wall-4" pos="3   4.5 .5" rgba="1 1. 1. 1" type="box" size="1.5 0.5 1" density='0.00001' contype="1" conaffinity="1"/>
+        <geom name="wall-5" pos="4.5   3 .5" rgba="1 1. 1. 1" type="box" size="0.5 2 1" density='0.00001' contype="1" conaffinity="1"/>
             
-        <geom name="wall-6" pos="6    -1.5 .5" rgba="1. 0.5 1. 1" type="box" size="2 0.5 1" density='0.00001' contype="1" conaffinity="1"/>
-        <geom name="wall-7" pos="7.5     0 .5" rgba="1. 0.5 1. 1" type="box" size="0.5 1.5 1" density='0.00001' contype="1" conaffinity="1"/>
-        <geom name="wall-8" pos="6     1.5 .5" rgba="1. 0.5 1. 1" type="box" size="2 0.5 1" density='0.00001' contype="1" conaffinity="1"/>
+        <geom name="wall-6" pos="6    -1.5 .5" rgba="1. 1 1. 1" type="box" size="2 0.5 1" density='0.00001' contype="1" conaffinity="1"/>
+        <geom name="wall-7" pos="7.5     0 .5" rgba="1. 1 1. 1" type="box" size="0.5 1.5 1" density='0.00001' contype="1" conaffinity="1"/>
+        <geom name="wall-8" pos="6     1.5 .5" rgba="1. 1 1. 1" type="box" size="2 0.5 1" density='0.00001' contype="1" conaffinity="1"/>
             
-        <geom name="wall-9" pos="1.5   -3   .5" rgba="1. 1. 0.5 1" type="box" size="0.5 2 1" density='0.00001' contype="1" conaffinity="1"/>
-        <geom name="wall-10" pos="3    -4.5 .5" rgba="1. 1. 0.5 1" type="box" size="1.5 0.5 1" density='0.00001' contype="1" conaffinity="1"/>
-        <geom name="wall-11" pos="4.5  -3   .5" rgba="1. 1. 0.5 1" type="box" size="0.5 2 1" density='0.00001' contype="1" conaffinity="1"/>
+        <geom name="wall-9" pos="1.5   -3   .5" rgba="1. 1. 1 1" type="box" size="0.5 2 1" density='0.00001' contype="1" conaffinity="1"/>
+        <geom name="wall-10" pos="3    -4.5 .5" rgba="1. 1. 1 1" type="box" size="1.5 0.5 1" density='0.00001' contype="1" conaffinity="1"/>
+        <geom name="wall-11" pos="4.5  -3   .5" rgba="1. 1. 1 1" type="box" size="0.5 2 1" density='0.00001' contype="1" conaffinity="1"/>
 
+        <geom name="target0" pos="3  3 0" rgba="0 1 0 0.2" type="sphere" size="2"/>
+        <geom name="target1" pos="6 0 0" rgba="0 1 0 0.2" type="sphere" size="2"/>
+        <geom name="target2" pos="3 -3 0" rgba="0 1 0 0.2" type="sphere" size="2"/>
     </worldbody>
     <tendon>
         <fixed name="left_hipknee">
