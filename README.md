@@ -4,11 +4,11 @@ Code for our paper: Hierarchical RL Using an Ensemble of Proprioceptive Periodic
 ## Citation
 If you find this work helpful, please cite our work, as well as Ilya Kostrikov's pytoch baseline repo.
 
-    @article{marino2018hierarchical,
-      title = {Hierarchical RL Using an Ensemble of Proprioceptive Periodic Policies},
-      author = {Marino, Kenneth and Gupta, Abhinav and Fergus, Rob and Szlam, Arthur},
-      journal = {ICLR},
-      year = {2019}
+    @article{marino2019ep3,
+        title={Hierarchical RL Using an Ensemble of Proprioceptive Periodic Policies},
+        author={Marino, Kenneth and Gupta, Abhinav and Fergus, Rob and Szlam, Arthur},
+        journal={ICLR},
+        year={2019}
     }
 
 ## Requirements
